@@ -1,17 +1,21 @@
 import Layout from '../common/Layout';
 import Popup from '../common/Popup';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
+
 function Youtube() {
+  const pop = useRef(null);
+
   const [videos, setVideos] = useState([]);
-  const [popup, setPopup] = useState(false);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const key = 'AIzaSyBjrOKaWRkP5g3P8aW1QsSd1bpFDhUKVZk';
-    const playlistId = 'PLR22mOC3bZYoRxVtcK0_J5EOkq7SK9Tv9';
+    const key = 'AIzaSyAdo3TEXjvTi-2C_p9Z8zgbQD3uCz_JnAs';
+    const playlistId = 'PLdHIHMgBSgjLGDg3SJwV_MdhGnap-xuXg';
     const num = 6;
     const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&playlistId=${playlistId}&maxResults=${num}`;
 
@@ -20,21 +24,21 @@ function Youtube() {
     });
   }, []);
 
-  const onPopup = (index) => {
-    setPopup((prev) => !prev);
-    setIndex(index);
-  };
-
   return (
     <>
       <Layout name={'youtube'}>
         <div className='videosWrap'>
-          {videos.map((video, index) => {
-            const idx = (index + 1).toString();
+          {videos.map((video, idx) => {
+            const idxTit = (idx + 1).toString();
 
             return (
-              <article key={index} onClick={() => onPopup(index)}>
-                <h2>{`salt aewol #${idx.length < 2 ? idx.padStart(2, '0') : idx
+              <article
+                key={idx}
+                onClick={() => {
+                  pop.current.open();
+                  setIndex(idx);
+                }}>
+                <h2>{`salt aewol #${idxTit.length < 2 ? idxTit.padStart(2, '0') : idxTit
                   }`}</h2>
                 <div className='pic'>
                   <img
@@ -43,7 +47,7 @@ function Youtube() {
                   />
                 </div>
                 <div className='desc'>
-                  <p>{idx.length < 2 ? idx.padStart(2, '0') : idx}</p>
+                  <p>{idxTit.length < 2 ? idxTit.padStart(2, '0') : idxTit}</p>
                   <span>{video.snippet.publishedAt.split('T')[0]}</span>
                 </div>
               </article>
@@ -52,13 +56,18 @@ function Youtube() {
         </div>
       </Layout>
 
-      {popup ? (
-        <Popup setPopup={setPopup}>
-          <iframe
-            src={`https://www.youtube.com/embed/${videos[index].snippet.resourceId.videoId}`}
-            frameBorder='0'></iframe>
-        </Popup>
-      ) : null}
+      <Popup ref={pop}>
+        {videos.length !== 0 ? (
+          <>
+            <iframe
+              src={`https://www.youtube.com/embed/${videos[index].snippet.resourceId.videoId}`}
+              frameborder='0'></iframe>
+            <span className='btnClose' onClick={() => pop.current.close()}>
+              <FontAwesomeIcon icon={faX} />
+            </span>
+          </>
+        ) : null}
+      </Popup>
     </>
   );
 }

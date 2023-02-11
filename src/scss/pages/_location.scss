@@ -1,4 +1,13 @@
 .location {
+	.locationBg {
+		width: 100%;
+
+		img {
+			@include objectFit;
+			opacity: 0.7;
+			object-position: bottom;
+		}
+	}
 	.inner {
 		.rightDeco {
 			position: absolute;
