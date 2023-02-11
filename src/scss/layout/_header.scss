@@ -1,7 +1,7 @@
 header {
 	width: 100%;
 	background-color: $colorWhite;
-	border: 1px solid $colorBlack;
+	border-bottom: 1px solid $colorBlack;
 
 	.inner {
 		@include inner;
@@ -19,47 +19,56 @@ header {
 			position: absolute;
 			bottom: 0;
 			right: 0;
+			opacity: 1;
+			visibility: visible;
+			transition: 0.35s;
 			@include clear;
 
 			li {
 				float: left;
-				.logo {
-					position: absolute;
-					bottom: 2rem;
-					left: 0;
 
-					a {
-						font-family: 'Lato', sans-serif;
-						display: inline-block;
-						padding: 2rem 3rem;
-						font-size: 1.4rem;
-						line-height: 1;
-						transition: 0.35s;
-						color: $colorBlack;
-					}
+				a {
+					font-family: 'Lato', sans-serif;
+					display: inline-block;
+					padding: 2rem 3rem;
+					font-size: 1.4rem;
+					line-height: 1;
+					transition: 0.35s;
+					color: $colorBlack;
 				}
+			}
+		}
 
-				#gnb {
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					@include clear;
+		.menuMo {
+			position: absolute;
+			bottom: 2rem;
+			right: 3rem;
+			width: 2rem;
+			height: 1.5rem;
+			bottom: 2.5rem;
+			opacity: 0;
+			visibility: hidden;
+			transition: 0.35s;
 
-					li {
-						float: left;
+			span {
+				width: 100%;
+				height: 1px;
+				position: absolute;
+				background-color: $colorBlack;
 
-						a {
-							font-family: 'Lato', sans-serif;
-							display: inline-block;
-							padding: 2rem 3rem;
-							font-size: 1.4rem;
-							line-height: 1;
-						}
-					}
+				&:nth-of-type(1) {
+					top: 0;
+				}
+				&:nth-of-type(2) {
+					top: 50%;
+				}
+				&:nth-of-type(3) {
+					top: 100%;
 				}
 			}
 		}
 	}
+
 	&.main {
 		border: 0;
 		background-color: transparent;
@@ -69,6 +78,7 @@ header {
 		z-index: 9;
 	}
 }
+
 @include tablet {
 	header {
 		.inner {
@@ -79,7 +89,13 @@ header {
 			}
 
 			#gnb {
-				display: none;
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			.menuMo {
+				opacity: 1;
+				visibility: visible;
 			}
 		}
 	}
