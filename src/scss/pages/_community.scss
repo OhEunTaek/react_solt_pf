@@ -1,0 +1,244 @@
+.community {
+	.communityBg {
+		width: 100%;
+
+		img {
+			@include objectFit;
+			opacity: 0.3;
+		}
+	}
+
+	.inner {
+		.communityVisual {
+			padding-bottom: 5rem;
+			margin-bottom: 5rem;
+			border-bottom: 1px solid $colorBlack;
+
+			> .wrap {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+
+				.pic {
+					width: 30%;
+
+					img {
+						@include objectFit;
+					}
+				}
+
+				.desc {
+					width: 60%;
+					display: flex;
+					align-content: center;
+					flex-wrap: wrap;
+
+					.descTitle {
+						font-size: 8rem;
+						font-family: $fontPoint;
+						font-weight: 100;
+						margin-bottom: 1rem;
+					}
+
+					.descContent {
+						font-size: $fz16;
+						line-height: 1.4;
+						font-family: $fontDefault;
+					}
+				}
+			}
+		}
+
+		.BtnWrite {
+			width: 100%;
+			border: 1px solid $colorBlack;
+			font-family: $fontDefault;
+			font-size: 2rem;
+			padding: 1rem 0;
+		}
+
+		.showBox {
+			margin-top: 5rem;
+
+			article {
+				background-color: #eee;
+				margin-bottom: 3rem;
+				width: 100%;
+				padding: 2rem;
+
+				.title {
+					@include clear;
+
+					h2 {
+						font-size: 1.8rem;
+						padding-bottom: 2rem;
+						color: $colorBlack;
+						font-family: $fontDefault;
+						letter-spacing: 1px;
+						float: left;
+					}
+
+					.btns {
+						float: right;
+
+						.edit {
+							margin-right: 1rem;
+							border-radius: 50%;
+							width: 3rem;
+							height: 3rem;
+							background-color: $colorWhite;
+							color: $colorBlack;
+							transition: $tranDefault;
+							font-size: 1.4rem;
+
+							&:hover {
+								color: $colorPoint;
+							}
+						}
+
+						.delete {
+							border-radius: 50%;
+							width: 3rem;
+							height: 3rem;
+							background-color: $colorWhite;
+							color: $colorBlack;
+							transition: $tranDefault;
+							font-size: 1.4rem;
+
+							&:hover {
+								color: $colorPoint;
+							}
+						}
+					}
+				}
+
+				.comments {
+					p {
+						font-size: 1.4rem;
+						color: $colorBlack;
+						font-family: $fontDefault;
+					}
+				}
+
+				.editTitle {
+					@include clear;
+
+					input {
+						font-size: $fz16;
+						padding: 0.5rem 0 0.5rem 0.5rem;
+						color: $colorBlack;
+						font-family: $fontDefault;
+						margin-bottom: 2rem;
+						letter-spacing: 1px;
+						float: left;
+						border: 0;
+						outline: none;
+					}
+
+					.editBtns {
+						float: right;
+
+						.cancel {
+							margin-right: 1rem;
+							border-radius: 50%;
+							width: 3rem;
+							height: 3rem;
+							background-color: $colorWhite;
+							color: $colorBlack;
+							transition: $tranDefault;
+							font-size: 1.4rem;
+
+							&:hover {
+								color: $colorPoint;
+							}
+						}
+
+						.confirm {
+							border-radius: 50%;
+							width: 3rem;
+							height: 3rem;
+							background-color: $colorWhite;
+							color: $colorBlack;
+							transition: $tranDefault;
+							font-size: 1.4rem;
+
+							&:hover {
+								color: $colorPoint;
+							}
+						}
+					}
+				}
+
+				.editComments {
+					textarea {
+						border: 0;
+						font-size: 1.4rem;
+						color: $colorBlack;
+						font-family: $fontDefault;
+						resize: none;
+						padding: 0.5rem 0 0.5rem 0.5rem;
+						outline: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.writeBox {
+	width: 35rem;
+	margin: 0 auto;
+	background-color: #ddd;
+	padding: 5rem 3rem 3rem;
+	position: relative;
+
+	.inputBox {
+		.labelWrap {
+			margin-bottom: 1rem;
+
+			label {
+				font-size: $fz16;
+				font-family: $fontPoint;
+			}
+		}
+
+		input {
+			width: 100%;
+			border: 0;
+			padding: 0.5rem 0;
+			margin-bottom: 2rem;
+			outline: none;
+		}
+
+		textarea {
+			width: 100%;
+			border: 0;
+			padding: 0.5rem 0;
+			outline: none;
+			resize: none;
+			margin-bottom: 2rem;
+		}
+
+		.btnReset,
+		.btnCreate {
+			width: 49%;
+			color: $colorBlack;
+			font-family: $fontDefault;
+			border: 1px solid $colorBlack;
+			padding: 1rem 0;
+			margin-right: 2%;
+		}
+
+		.btnCreate {
+			margin-right: 0;
+		}
+	}
+
+	.btnClose_community {
+		position: absolute;
+		top: 3rem;
+		right: 3rem;
+		font-size: $fz16;
+		cursor: pointer;
+	}
+}
